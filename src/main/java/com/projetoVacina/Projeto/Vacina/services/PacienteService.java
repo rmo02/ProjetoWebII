@@ -26,7 +26,7 @@ public class PacienteService {
     public Optional<Paciente> findPacinteID(String id){
         return pacienteRepository.findById(id);
     }
-
+    @Transactional
     public void deletarPaciente(Paciente paciente){
         pacienteRepository.delete(paciente);
     }

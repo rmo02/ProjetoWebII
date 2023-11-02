@@ -6,6 +6,6 @@ public record VacinaDTO(
         @NotBlank
         String nome,
         @NotBlank
-        String dataVac
+        String data
 ) {
 }

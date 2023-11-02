@@ -3,8 +3,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
-
-
+import java.util.List;
 
 @Table(name="paciente")
 @Entity
@@ -22,8 +21,9 @@ public class Paciente implements Serializable {
     private String email;
     @Column(nullable = false, length = 250)
     private String dataNasc;
-    @Embedded
-    private Vacina vacina;
+
+    @OneToMany(mappedBy = "paciente",cascade = CascadeType.ALL)
+    private List<Vacina> vacina;
 
     public String getId() {
         return id;
@@ -65,12 +65,5 @@ public class Paciente implements Serializable {
         this.dataNasc = dataNasc;
     }
 
-    public Vacina getVacina() {
-        return vacina;
-    }
-
-    public void setVacina(Vacina vacina) {
-        this.vacina = vacina;
-    }
 }
 
